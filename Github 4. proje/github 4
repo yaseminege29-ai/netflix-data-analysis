@@ -1,0 +1,26 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+
+url = "https://raw.githubusercontent.com/datasciencedojo/datasets/master/titanic.csv"
+df = pd.read_csv(url)
+
+print("Dataset shape:", df.shape)
+print(df.head())
+
+print("\nColumns:")
+print(df.columns)
+
+survival_counts = df["Survived"].value_counts()
+print("\nSurvival Counts:")
+print(survival_counts)
+
+class_counts = df["Pclass"].value_counts().sort_index()
+print("\nPassenger Class Counts:")
+print(class_counts)
+
+survival_counts.plot(kind="bar")
+plt.title("Survival Distribution")
+plt.xlabel("Survived (0 = No, 1 = Yes)")
+plt.ylabel("Count")
+plt.tight_layout()
+plt.show()
